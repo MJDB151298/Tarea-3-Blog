@@ -1,5 +1,3 @@
-package Clases;
-
 import static spark.Spark.staticFileLocation;
 
 public class Main {

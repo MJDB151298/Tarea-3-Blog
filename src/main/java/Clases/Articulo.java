@@ -2,21 +2,23 @@ package Clases;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 public class Articulo {
-    public long id;
+    public int id;
     public String titulo;
     public String cuerpo;
     public Usuario autor;
     public Date fecha;
-    ArrayList<Comentario> listaComentarios;
-    ArrayList<Etiqueta> listaEtiquetas;
+    public ArrayList<Comentario> listaComentarios;
+    public ArrayList<Etiqueta> listaEtiquetas;
+    public String cuerpoResumido;
 
     public Articulo(){
 
     }
 
-    public Articulo(long id, String titulo, String cuerpo, Usuario autor){
+    public Articulo(int id, String titulo, String cuerpo, Usuario autor){
         this.id = id;
         this.titulo = titulo;
         this.cuerpo = cuerpo;
@@ -24,9 +26,10 @@ public class Articulo {
         this.fecha = new Date(System.currentTimeMillis());
         this.listaComentarios = new ArrayList<>();
         this.listaEtiquetas = new ArrayList<>();
+        this.cuerpoResumido = "";
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
     public String getTitulo() {
@@ -44,8 +47,27 @@ public class Articulo {
     public ArrayList<Comentario> getListaComentarios() {
         return listaComentarios;
     }
+    public String getCuerpoResumido(){
+        StringTokenizer st = new StringTokenizer(getCuerpo());
+        if(st.countTokens() > 30){
+            int i = 0;
+            int spaces = 0;
+            while(spaces <= 30){
+                cuerpoResumido += cuerpo.charAt(i);
+                if(cuerpo.charAt(i) == ' '){
+                    spaces++;
+                }
+                i++;
+            }
+            cuerpoResumido += "...";
+        }
+        else{
+            cuerpoResumido = getCuerpo();
+        }
+        return cuerpoResumido;
+    }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public void setTitulo(String titulo) {
