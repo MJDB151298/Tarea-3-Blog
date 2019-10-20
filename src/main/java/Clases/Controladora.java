@@ -1,10 +1,7 @@
-import Clases.Articulo;
-import Clases.Usuario;
+package Clases;
 
-import javax.naming.ldap.Control;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Controladora implements Serializable {
     Usuario usuario1 = new Usuario("Zycotec01", "Marcos", "hola123", true);
@@ -16,11 +13,16 @@ public class Controladora implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static Controladora controladora;
-
+    private ArrayList<Usuario> misUsuarios;
     private ArrayList<Articulo> misArticulos;
+    private ArrayList<Comentario> misComentarios;
+    private ArrayList<Etiqueta> misEtiquetas;
 
     public Controladora(){
         this.misArticulos = new ArrayList<>();
+        this.misUsuarios = new ArrayList<>();
+        this.misComentarios = new ArrayList<>();
+        this.misEtiquetas = new ArrayList<>();
         getMisArticulos().add(articulo1);
         getMisArticulos().add(articulo2);
         getMisArticulos().add(articulo3);
@@ -31,10 +33,6 @@ public class Controladora implements Serializable {
             controladora = new Controladora();
         }
         return controladora;
-    }
-
-    public ArrayList<Articulo> getMisArticulos(){
-        return this.misArticulos;
     }
 
     public ArrayList<Articulo> reverseArticulos(){
@@ -54,4 +52,62 @@ public class Controladora implements Serializable {
         return null;
     }
 
+    public Usuario buscarAutor(String userName)
+    {
+        Usuario usuario = null;
+        for (Usuario usu: Controladora.getInstance().getMisUsuarios()
+             ) {
+            if (usu.getUsername().equalsIgnoreCase(userName))
+            {
+                usuario = usu;
+            }
+        }
+        return usuario;
+    }
+
+    public Comentario buscarComentario(int id)
+    {
+        Comentario coment = null;
+
+        for (Comentario com: Controladora.getInstance().getMisComentarios()
+             ) {
+            if (com.getId() == id)
+            {
+                coment = com;
+            }
+        }
+
+        return coment;
+    }
+
+    public Etiqueta buscarEtiqueta(int id)
+    {
+        Etiqueta etiq = null;
+
+        for (Etiqueta et: Controladora.getInstance().getMisEtiquetas()
+        ) {
+            if (et.getId() == id)
+            {
+                etiq = et;
+            }
+        }
+
+        return etiq;
+    }
+
+    public ArrayList<Usuario> getMisUsuarios() {
+        return misUsuarios;
+    }
+
+    public ArrayList<Articulo> getMisArticulos(){
+        return this.misArticulos;
+    }
+
+    public ArrayList<Comentario> getMisComentarios() {
+        return misComentarios;
+    }
+
+    public ArrayList<Etiqueta> getMisEtiquetas() {
+        return misEtiquetas;
+    }
 }

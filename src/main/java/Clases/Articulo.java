@@ -5,20 +5,20 @@ import java.util.Date;
 import java.util.StringTokenizer;
 
 public class Articulo {
-    public int id;
-    public String titulo;
-    public String cuerpo;
-    public Usuario autor;
-    public Date fecha;
-    public ArrayList<Comentario> listaComentarios;
-    public ArrayList<Etiqueta> listaEtiquetas;
-    public String cuerpoResumido;
+    private long id;
+    private String titulo;
+    private String cuerpo;
+    private Usuario autor;
+    private Date fecha;
+    private ArrayList<Comentario> listaComentarios;
+    private ArrayList<Etiqueta> listaEtiquetas;
+    private String cuerpoResumido;
 
     public Articulo(){
 
     }
 
-    public Articulo(int id, String titulo, String cuerpo, Usuario autor){
+    public Articulo(long id, String titulo, String cuerpo, Usuario autor){
         this.id = id;
         this.titulo = titulo;
         this.cuerpo = cuerpo;
@@ -29,7 +29,7 @@ public class Articulo {
         this.cuerpoResumido = "";
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
     public String getTitulo() {
