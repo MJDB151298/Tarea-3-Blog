@@ -90,23 +90,26 @@
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form>
+            <form action="/saveComment/${articulo.id}">
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea name="commentContent" class="form-control" rows="3"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button id="upload-comment" type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
         </div>
 
         <!-- Single Comment -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </div>
+        <div id="comment-container" class="media mb-4">
+          <#list listaComentarios as comentario>
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">${comentario.autor.username}</h5>
+              ${comentario.comentario}
+            </div>
+          </#list>
         </div>
+
 
         <!-- Comment with nested comments -->
         <div class="media mb-4">
@@ -214,6 +217,22 @@
   <!-- Bootstrap core JavaScript -->
   <script src="resources/publico/startbootstrap-blog-post-gh-pages/vendor/jquery/jquery.min.js"></script>
   <script src="resources/publico/startbootstrap-blog-post-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+          integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+          crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#uploadComment').on('click', function(){
+        var comentario = $(textarea.form-control).val();
+        var usuario = "Tu crazy wawawa";
+        var html = '<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">\
+                <div class="media-body">\
+                <h5 class="mt-0">' + usuario + '</h5>' + comentario + '</div>';
+        console.log(html);
+        $('#comment-container').append(html);
+      });
+    });
+  </script>
 
 </body>
 

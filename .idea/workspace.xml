@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7595b836-c63a-45d4-94f0-5fb4a1e1118f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ArticleServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/BootStrapServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ComentServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/DataBaseServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/InterArticleServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/TagServices.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/UserServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -20,25 +11,35 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Clases/Articulo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Clases/Articulo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Clases/Comentario.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Clases/Comentario.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Clases/Etiqueta.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Clases/Etiqueta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Controladora.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Rutas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Articulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Articulo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Comentario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Controladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Controladora.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Etiqueta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Etiqueta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Controladora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/post.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/post.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/ArticleServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ArticleServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/BootStrapServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/BootStrapServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/ComentServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ComentServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/InterArticleServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/InterArticleServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/TagServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/TagServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/UserServices.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -71,6 +72,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1SGdbX4ALc5gXf06ZmJ6nYzdchc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -127,9 +131,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tarea 3 Blog" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Gradle.Tarea 3 Blog" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -158,6 +179,7 @@
       <workItem from="1571279941367" duration="7501000" />
       <workItem from="1571424461833" duration="6644000" />
       <workItem from="1571439985007" duration="27402000" />
+      <workItem from="1571587318085" duration="16394000" />
     </task>
     <servers />
   </component>
@@ -176,5 +198,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/services/InterArticleServices.java</url>
+          <line>158</line>
+          <properties class="services.InterArticleServices" method="nuevoComentarioAlArticulo">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

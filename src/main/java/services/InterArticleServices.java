@@ -1,13 +1,15 @@
 package services;
 
-import Clases.*;
+import Clases.Articulo;
+import Clases.Comentario;
+import Clases.Controladora;
+import Clases.Etiqueta;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -160,13 +162,14 @@ public class InterArticleServices {
         Connection con = null;
         try {
 
-            String query = "insert into ARTICULOSCOMENTARIOS(idarticulo, idcomentario) values(?,?)";
+            String query = "insert into ARTICULOSCOMENTARIOS(id, idarticulo, idcomentario) values(?,?,?)";
             con = DataBaseServices.getInstancia().getConexion();
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setLong(1, art.getId());
-            prepareStatement.setLong(2, comentario.getId());
+            prepareStatement.setLong(1, art.getListaComentarios().size()+1);
+            prepareStatement.setLong(2, art.getId());
+            prepareStatement.setLong(3, comentario.getId());
             //
             int fila = prepareStatement.executeUpdate();
             ok = fila > 0 ;
@@ -181,6 +184,9 @@ public class InterArticleServices {
             }
         }
 
+        int index = Controladora.getInstance().getMisArticulos().indexOf(art);
+        Controladora.getInstance().getMisComentarios().add(comentario);
+        Controladora.getInstance().getMisArticulos().get(index).getListaComentarios().add(comentario);
         return ok;
     }
 
@@ -196,11 +202,12 @@ public class InterArticleServices {
         Connection con = null;
         try {
 
-            String query = "insert into ARTICULOSETIQUETAS(idarticulo, idetiqueta) values(?,?)";
+            String query = "insert into ARTICULOSETIQUETAS(id, idarticulo, idetiqueta) values(?,?,?)";
             con = DataBaseServices.getInstancia().getConexion();
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
+            prepareStatement.setLong(1, art.getListaEtiquetas().size()+1);
             prepareStatement.setLong(1, art.getId());
             prepareStatement.setLong(2, etq.getId());
             //

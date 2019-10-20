@@ -1,7 +1,8 @@
 package Clases;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.StringTokenizer;
 
 public class Articulo {
@@ -18,12 +19,12 @@ public class Articulo {
 
     }
 
-    public Articulo(long id, String titulo, String cuerpo, Usuario autor){
-        this.id = id;
+    public Articulo(String titulo, String cuerpo, Usuario autor){
+        this.id = 0;
         this.titulo = titulo;
         this.cuerpo = cuerpo;
         this.autor = autor;
-        this.fecha = new Date(System.currentTimeMillis());
+        this.fecha = Date.valueOf(LocalDate.now());
         this.listaComentarios = new ArrayList<>();
         this.listaEtiquetas = new ArrayList<>();
         this.cuerpoResumido = "";
@@ -44,6 +45,7 @@ public class Articulo {
     public Date getFecha() {
         return fecha;
     }
+    public ArrayList<Etiqueta> getListaEtiquetas() { return listaEtiquetas; }
     public ArrayList<Comentario> getListaComentarios() {
         return listaComentarios;
     }

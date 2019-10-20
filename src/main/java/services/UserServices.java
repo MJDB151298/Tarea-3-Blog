@@ -8,13 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserServices {
-    public List<Usuario> listaUsuarios() {
-        List<Usuario> lista = new ArrayList<>();
+    public ArrayList<Usuario> listaUsuarios() {
+        ArrayList<Usuario> lista = new ArrayList<>();
         Connection con = null; //objeto conexion.
         try {
             //
@@ -32,7 +31,7 @@ public class UserServices {
                 usu.setAutor(rs.getBoolean("autor"));
 
                 lista.add(usu);
-                Controladora.getInstance().getMisUsuarios().add(usu);
+                //Controladora.getInstance().getMisUsuarios().add(usu);
             }
 
         } catch (SQLException ex) {
@@ -123,7 +122,7 @@ public class UserServices {
                 Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        Controladora.getInstance().getMisUsuarios().add(usu);
         return ok;
     }
 
