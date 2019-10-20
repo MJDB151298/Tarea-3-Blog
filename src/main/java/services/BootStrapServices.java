@@ -47,8 +47,8 @@ public class BootStrapServices {
                 "(\n" +
                 "   ID BIGINT PRIMARY KEY NOT NULL,\n" +
                 "  TITULO VARCHAR(100) NOT NULL,\n" +
-                "  CUERPO VARCHAR(255) NOT NULL,\n" +
-                "  AUTOR INTEGER NOT NULL,\n" +
+                "  CUERPO VARCHAR(2000) NOT NULL,\n" +
+                "  AUTOR VARCHAR(255),\n" +
                 "  FECHA DATE NOT NULL,\n" +
                 "  FOREIGN KEY (AUTOR) references USUARIOS(USERNAME)" +
                 ");";
@@ -61,7 +61,7 @@ public class BootStrapServices {
         String sql5 = "CREATE TABLE IF NOT EXISTS COMENTARIOS\n" +
                 "(\n" +
                 "   ID BIGINT PRIMARY KEY NOT NULL,\n" +
-                "  COMENTARIO VARCHAR(255) NOT NULL,\n" +
+                "  COMENTARIO VARCHAR(2000) NOT NULL,\n" +
                 "  AUTOR VARCHAR(100) NOT NULL,\n" +
                 "  ARTICULO INTEGER NOT NULL,\n" +
                 "  FOREIGN KEY (AUTOR) references USUARIOS(USERNAME),\n" +

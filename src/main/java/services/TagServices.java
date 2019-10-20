@@ -2,20 +2,18 @@ package services;
 
 import Clases.Controladora;
 import Clases.Etiqueta;
-import Clases.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TagServices {
-    public List<Etiqueta> listaEtiquetas() {
-        List<Etiqueta> lista = new ArrayList<>();
+    public ArrayList<Etiqueta> listaEtiquetas() {
+        ArrayList<Etiqueta> lista = new ArrayList<>();
         Connection con = null; //objeto conexion.
         try {
             //
@@ -30,7 +28,7 @@ public class TagServices {
                 etq.setEtiqueta(rs.getString("etiqueta"));
 
                 lista.add(etq);
-                Controladora.getInstance().getMisEtiquetas().add(etq);
+                //Controladora.getInstance().getMisEtiquetas().add(etq);
             }
 
         } catch (SQLException ex) {
@@ -114,7 +112,7 @@ public class TagServices {
                 Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        Controladora.getInstance().getMisEtiquetas().add(etq);
         return ok;
     }
 

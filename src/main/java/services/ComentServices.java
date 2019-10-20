@@ -2,22 +2,20 @@ package services;
 
 import Clases.Comentario;
 import Clases.Controladora;
-import Clases.Usuario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ComentServices {
-    public List<Comentario> listaComentarios() {
+    public ArrayList<Comentario> listaComentarios() {
         String autor;
         int idArticulo;
-        List<Comentario> lista = new ArrayList<>();
+        ArrayList<Comentario> lista = new ArrayList<>();
         Connection con = null; //objeto conexion.
         try {
             //
@@ -36,7 +34,7 @@ public class ComentServices {
                 com.setArticulo(Controladora.getInstance().buscarArticulo(idArticulo));
 
                 lista.add(com);
-                Controladora.getInstance().getMisComentarios().add(com);
+                //Controladora.getInstance().getMisComentarios().add(com);
             }
 
         } catch (SQLException ex) {
@@ -106,14 +104,15 @@ public class ComentServices {
         Connection con = null;
         try {
 
-            String query = "insert into comentarios(comentario, autor, articulo) values(?,?,?)";
+            String query = "insert into comentarios(id, comentario, autor, articulo) values(?, ?,?,?)";
             con = DataBaseServices.getInstancia().getConexion();
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setString(1, comentario.getComentario());
-            prepareStatement.setString(2, comentario.getAutor().getUsername());
-            prepareStatement.setLong(3, comentario.getArticulo().getId());
+            prepareStatement.setLong(1, Controladora.getInstance().getMisComentarios().size()+1);
+            prepareStatement.setString(2, comentario.getComentario());
+            prepareStatement.setString(3, comentario.getAutor().getUsername());
+            prepareStatement.setLong(4, comentario.getArticulo().getId());
             //
             int fila = prepareStatement.executeUpdate();
             ok = fila > 0 ;
@@ -127,7 +126,7 @@ public class ComentServices {
                 Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        Controladora.getInstance().getMisComentarios().add(comentario);
         return ok;
     }
 

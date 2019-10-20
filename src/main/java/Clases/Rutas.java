@@ -1,11 +1,12 @@
 package Clases;
 
-import Clases.Articulo;
-import Clases.Controladora;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.Version;
+import services.ComentServices;
+import services.InterArticleServices;
+import services.UserServices;
 import spark.Spark;
 
 import java.io.File;
@@ -13,9 +14,6 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
-
-
-import static spark.route.HttpMethod.get;
 
 public class Rutas {
     public void manejoRutas()
@@ -36,11 +34,26 @@ public class Rutas {
         });
 
         Spark.get("/menu/:id", (request, response) -> {
-            int id = Integer.parseInt(request.params("id"));
+            long id = Long.parseLong(request.params("id"));
             Articulo articulo = Controladora.getInstance().buscarArticulo(id);
+            System.out.println(articulo.getId());
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("articulo", articulo);
+            attributes.put("listaComentarios", articulo.getListaComentarios());
            return getPlantilla(configuration, attributes, "post.ftl");
+        });
+
+        Spark.get("/saveComment/:id", (request, response) -> {
+            String id = request.params("id");
+            String comentario = request.queryParams("commentContent");
+            Articulo articulo = Controladora.getInstance().buscarArticulo(Long.parseLong(id));
+            Usuario usuario = new UserServices().getUsuario("Zycotec01");
+            Comentario newComentario = new Comentario(comentario, usuario, articulo);
+
+            new ComentServices().crearComentario(newComentario);
+            new InterArticleServices().nuevoComentarioAlArticulo(articulo, newComentario);
+            response.redirect("/menu/"+id);
+            return "";
         });
 
     }

@@ -10,8 +10,8 @@ public class Comentario {
 
     }
 
-    public Comentario(long id, String comentario, Usuario autor, Articulo articulo){
-        this.id = id;
+    public Comentario(String comentario, Usuario autor, Articulo articulo){
+        this.id = Controladora.getInstance().getMisComentarios().size()+1;
         this.comentario = comentario;
         this.autor = autor;
         this.articulo = articulo;

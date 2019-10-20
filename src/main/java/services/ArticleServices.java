@@ -1,17 +1,17 @@
 package services;
 
-import Clases.*;
+import Clases.Articulo;
+import Clases.Controladora;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ArticleServices {
-    public List<Articulo> listaArticulos() {
+    public ArrayList<Articulo> listaArticulos() {
         String userName;
-        List<Articulo> lista = new ArrayList<>();
+        ArrayList<Articulo> lista = new ArrayList<>();
         Connection con = null; //objeto conexion.
         try {
             //
@@ -30,7 +30,7 @@ public class ArticleServices {
                 art.setFecha(rs.getDate("fecha"));
 
                 lista.add(art);
-                Controladora.getInstance().getMisArticulos().add(art);
+                //Controladora.getInstance().getMisArticulos().add(art);
             }
 
 
@@ -100,15 +100,16 @@ public class ArticleServices {
         Connection con = null;
         try {
 
-            String query = "insert into articulos(titulo, cuerpo, autor, fecha) values(?,?,?,?)";
+            String query = "insert into articulos(id, titulo, cuerpo, autor, fecha) values(?,?,?,?,?)";
             con = DataBaseServices.getInstancia().getConexion();
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setString(1, art.getTitulo());
-            prepareStatement.setString(2, art.getCuerpo());
-            prepareStatement.setString(3, art.getAutor().getUsername());
-            prepareStatement.setDate(4, (Date) art.getFecha());
+            prepareStatement.setLong(1, Controladora.getInstance().getMisArticulos().size()+1);
+            prepareStatement.setString(2, art.getTitulo());
+            prepareStatement.setString(3, art.getCuerpo());
+            prepareStatement.setString(4, art.getAutor().getUsername());
+            prepareStatement.setDate(5, art.getFecha());
             //
             int fila = prepareStatement.executeUpdate();
             ok = fila > 0 ;
@@ -122,7 +123,7 @@ public class ArticleServices {
                 Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        Controladora.getInstance().getMisArticulos().add(art);
         return ok;
     }
 
