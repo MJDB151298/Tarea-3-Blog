@@ -50,6 +50,7 @@ public class Articulo {
         return listaComentarios;
     }
     public String getCuerpoResumido(){
+        cuerpoResumido = "";
         StringTokenizer st = new StringTokenizer(getCuerpo());
         if(st.countTokens() > 30){
             int i = 0;
