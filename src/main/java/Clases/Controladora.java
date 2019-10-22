@@ -106,6 +106,24 @@ public class Controladora implements Serializable {
         return etiq;
     }
 
+    public boolean validateUser(String username){
+        for(Usuario usuario : Controladora.getInstance().getMisUsuarios()){
+            if(usuario.getUsername().equalsIgnoreCase(username)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean validatePassword(String username, String password){
+        for(Usuario usuario : Controladora.getInstance().getMisUsuarios()){
+            if(usuario.getUsername().equalsIgnoreCase(username) && usuario.getPassword().equals(password)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Usuario> getMisUsuarios() {
         return misUsuarios;
     }

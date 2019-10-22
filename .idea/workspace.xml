@@ -4,30 +4,15 @@
     <list default="true" id="7595b836-c63a-45d4-94f0-5fb4a1e1118f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Clases/Articulo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Clases/Articulo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Clases/Comentario.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Clases/Comentario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Clases/Etiqueta.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Clases/Etiqueta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Articulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Articulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Comentario.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Controladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Controladora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Etiqueta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Etiqueta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/index.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/post.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/post.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ArticleServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ArticleServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/BootStrapServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/BootStrapServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ComentServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ComentServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/InterArticleServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/InterArticleServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/TagServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/TagServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/UserServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/UserServices.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +70,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570748252611" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DemoJdbc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sparkjava_demo/sparkjava_demo" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -179,7 +164,8 @@
       <workItem from="1571279941367" duration="7501000" />
       <workItem from="1571424461833" duration="6644000" />
       <workItem from="1571439985007" duration="27402000" />
-      <workItem from="1571587318085" duration="16394000" />
+      <workItem from="1571587318085" duration="16595000" />
+      <workItem from="1571667228288" duration="12775000" />
     </task>
     <servers />
   </component>

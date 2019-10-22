@@ -12,6 +12,9 @@ public class Main {
         staticFileLocation("/publico");
         new Rutas().manejoRutas();
 
+        //Aplicando Filtros
+        new Filtros().aplicarFiltros();
+
         //Iniciando el servicio
         BootStrapServices.startDb();
 
