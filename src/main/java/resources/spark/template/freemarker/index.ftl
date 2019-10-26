@@ -35,7 +35,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="/menu">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -45,6 +45,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#">${loggedUser.username}</a>
           </li>
+          <#if loggedUser.administrador == true>
+            <li class="nav-item">
+              <a class="nav-link" href="/autores">Autores</a>
+            </li>
+          </#if>
           <li class="nav-item">
             <a class="nav-link" href="/disconnect">Desconectar</a>
           </li>
@@ -60,10 +65,24 @@
 
       <!-- Blog Entries Column -->
       <div class="col-md-8">
-
+        <br><br>
         <h1 class="my-4">Page Heading
-          <small>Secondary Text</small>
         </h1>
+
+        <h2 class="my-4">Posts</h2>
+
+        <!-- Post Creation Form -->
+        <#if loggedUser.autor == true>
+          <form method="post" action="/createPost">
+            <div class="form-group">
+              <input class="form-control" name="postTitle" placeholder="Title" type="text">
+              <textarea name="postContent" class="form-control" rows="6"></textarea>
+              <input class="form-control" name="tags" placeholder="Tags" type="text">
+            </div>
+            <button id="postPost" type="submit" class="btn btn-primary">Publish</button>
+          </form>
+          <br><br>
+        </#if>
 
         <!-- Blog Post -->
         <#list listaArticulos as articulo>
@@ -77,6 +96,10 @@
             <div class="card-footer text-muted">
               Posted on January 1, 2017 by
               <a href="#">${articulo.autor.username}</a>
+              <label>Tags:</label>
+              <#list articulo.listaEtiquetas as etq>
+                <a>${etq.etiqueta}</a>
+              </#list>
             </div>
           </div>
         </#list>
@@ -95,7 +118,7 @@
 
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
-
+        <br><br>
         <!-- Search Widget -->
         <div class="card my-4">
           <h5 class="card-header">Search</h5>

@@ -124,6 +124,18 @@ public class Controladora implements Serializable {
         return false;
     }
 
+    public ArrayList<Etiqueta> divideTags(String tagsinput)
+    {
+        ArrayList<Etiqueta> tags = new ArrayList<>();
+        String[] ntags = tagsinput.split(" ");
+        for (String tag: ntags
+             ) {
+            Etiqueta etq = new Etiqueta(tag);
+            tags.add(etq);
+        }
+        return tags;
+    }
+
     public ArrayList<Usuario> getMisUsuarios() {
         return misUsuarios;
     }

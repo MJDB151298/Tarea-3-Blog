@@ -49,7 +49,7 @@ public class TagServices {
      * @param id
      * @return
      */
-    public Etiqueta getEtiqueta(int id) {
+    public Etiqueta getEtiqueta(long id) {
         Etiqueta etq = null;
         Connection con = null;
         try {
@@ -59,7 +59,7 @@ public class TagServices {
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setInt(1, id);
+            prepareStatement.setLong(1, id);
             //Ejecuto...
             ResultSet rs = prepareStatement.executeQuery();
             while(rs.next()){

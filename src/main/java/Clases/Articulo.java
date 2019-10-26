@@ -20,7 +20,7 @@ public class Articulo {
     }
 
     public Articulo(String titulo, String cuerpo, Usuario autor){
-        this.id = 0;
+        this.id = Controladora.getInstance().getMisArticulos().size()+1;
         this.titulo = titulo;
         this.cuerpo = cuerpo;
         this.autor = autor;

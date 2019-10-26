@@ -9,7 +9,7 @@ public class Etiqueta {
     }
 
     public Etiqueta(String etiqueta){
-        this.id = 0;
+        this.id = Controladora.getInstance().getMisEtiquetas().size()+1;
         this.etiqueta = etiqueta;
     }
 

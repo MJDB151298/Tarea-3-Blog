@@ -4,15 +4,14 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.Version;
-import services.ComentServices;
-import services.InterArticleServices;
-import services.UserServices;
+import services.*;
 import spark.Session;
 import spark.Spark;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +34,12 @@ public class Rutas {
             return getPlantilla(configuration, attributes, "index.ftl");
         });
 
+        Spark.get("/autores", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            attributes.put("listaUsuarios", Controladora.getInstance().getMisUsuarios());
+            return getPlantilla(configuration, attributes, "autor.ftl");
+        });
+
         Spark.get("/menu/:id", (request, response) -> {
             long id = Long.parseLong(request.params("id"));
             Articulo articulo = Controladora.getInstance().buscarArticulo(id);
@@ -44,6 +49,23 @@ public class Rutas {
             attributes.put("listaComentarios", articulo.getListaComentarios());
             attributes.put("loggedUser", request.session(true).attribute("usuario"));
            return getPlantilla(configuration, attributes, "post.ftl");
+        });
+
+        Spark.post("/makeAutor/:username", (request, response) -> {
+            String username = request.params("username");
+            Usuario usu = Controladora.getInstance().buscarAutor(username);
+            boolean valor;
+            if(request.queryParams("checkAutor") != null)
+            {
+                valor = true;
+            }
+            else{
+                valor=false;
+            }
+            usu.setAutor(valor);
+            new UserServices().actualizarUsuario(usu);
+            response.redirect("/autores");
+            return "";
         });
 
         Spark.get("/saveComment/:id", (request, response) -> {
@@ -57,6 +79,26 @@ public class Rutas {
             new ComentServices().crearComentario(newComentario);
             new InterArticleServices().nuevoComentarioAlArticulo(articulo, newComentario);
             response.redirect("/menu/"+id);
+            return "";
+        });
+
+        Spark.post("/createPost", (request, response) -> {
+            String title = request.queryParams("postTitle");
+            String body = request.queryParams("postContent");
+            ArrayList<Etiqueta> tags = Controladora.getInstance().divideTags(request.queryParams("tags"));
+            Articulo art = new Articulo(title, body, request.session(true).attribute("usuario"));
+            art.setListaEtiquetas(tags);
+            new ArticleServices().crearArticulo(art);
+            for (Etiqueta etq: tags
+                 ) {
+                if (new TagServices().getEtiqueta(etq.getId()) == null)
+                {
+                    Controladora.getInstance().getMisEtiquetas().add(etq);
+                    new TagServices().crearEtiqueta(etq);
+                }
+                new InterArticleServices().nuevaEtiquetaAlArticulo(art, etq);
+            }
+            response.redirect("/menu");
             return "";
         });
 

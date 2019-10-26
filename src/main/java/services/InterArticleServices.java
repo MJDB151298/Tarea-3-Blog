@@ -208,8 +208,8 @@ public class InterArticleServices {
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
             prepareStatement.setLong(1, art.getListaEtiquetas().size()+1);
-            prepareStatement.setLong(1, art.getId());
-            prepareStatement.setLong(2, etq.getId());
+            prepareStatement.setLong(2, art.getId());
+            prepareStatement.setLong(3, etq.getId());
             //
             int fila = prepareStatement.executeUpdate();
             ok = fila > 0 ;
