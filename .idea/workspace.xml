@@ -7,12 +7,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Articulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Articulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Controladora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Controladora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Filtros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Filtros.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/index.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/post.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/post.ftl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

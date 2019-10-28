@@ -128,11 +128,11 @@ public class Rutas {
             System.out.println("Hola");
             String remember = request.queryParams("remember");
 
-            /**if(remember != null){
+            if(remember != null){
 
                 System.out.println("waaaaaasaaaa");
-                response.cookie("/menu", username, "usuario", 36000, false);
-            }**/
+                response.cookie("usuario_id", usuario.getUsername(), 604800000);
+            }
             response.redirect("/menu");
             return "";
         });
@@ -178,6 +178,7 @@ public class Rutas {
         Spark.get("/disconnect", (request, response) -> {
             Session session=request.session(true);
             session.invalidate();
+            response.removeCookie("usuario_id");
             response.redirect("/login");
             return "";
         });
