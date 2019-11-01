@@ -40,6 +40,21 @@ public class Rutas {
             return getPlantilla(configuration, attributes, "autor.ftl");
         });
 
+        Spark.post("/deleteComment/:idPost/:idComment", (request, response) -> {
+            InterArticleServices articleServices = new InterArticleServices();
+            long idPost = Long.parseLong(request.params("idPost"));
+            Articulo art = Controladora.getInstance().buscarArticulo(idPost);
+            long idComment = Long.parseLong(request.params("idComment"));
+            Comentario comentario = Controladora.getInstance().buscarComentario(idComment);
+            articleServices.borrarComentarioDeArticulo(art, comentario);
+            art.getListaComentarios().remove(comentario);
+            Map<String, Object> attributes = new HashMap<>();
+            attributes.put("articulo", art);
+            attributes.put("listaComentarios", art.getListaComentarios());
+            attributes.put("loggedUser", request.session(true).attribute("usuario"));
+            return getPlantilla(configuration, attributes, "post.ftl");
+        });
+
         Spark.get("/menu/:id", (request, response) -> {
             long id = Long.parseLong(request.params("id"));
             Articulo articulo = Controladora.getInstance().buscarArticulo(id);
