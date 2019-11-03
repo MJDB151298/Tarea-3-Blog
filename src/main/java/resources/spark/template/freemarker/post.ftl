@@ -55,7 +55,7 @@
 
   <!-- Page Content -->
   <div class="container">
-
+    <br><br>
     <div class="row">
 
       <!-- Post Content Column -->
@@ -86,6 +86,34 @@
         <p>${articulo.cuerpo}</p>
         <hr>
 
+          <!-- Post Tags -->
+          <#if articulo.listaEtiquetas?size != 0>
+              <h5>Tags:</h5>
+              <#list articulo.listaEtiquetas as etq>
+                  <p id="postedTags">${etq.etiqueta}</p>
+              </#list>
+          </#if>
+          <hr>
+
+          <!-- edit comment-->
+          <#if articulo.autor.username == loggedUser.username>
+            <a id="editButton" class="btn btn-primary">Edit</a>
+              <br><br>
+          </#if>
+
+          <#if articulo.autor.username == loggedUser.username>
+              <div id="mydiv" style="visibility:hidden">
+                  <form method="post" action="/updatePost/${articulo.id}">
+                      <div class="form-group">
+                          <input class="form-control" id="postTitle" name="postTitle" placeholder="Title" type="text">
+                          <textarea id="postContent"  name="postContent" class="form-control" rows="6"></textarea>
+                          <input id="tags" class="form-control" name="tags" placeholder="Tags" type="text">
+                      </div>
+                      <button id="postPost" type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                  <br><br>
+              </div>
+          </#if>
         <!-- Comments Form -->
         <div class="card my-4">
           <h5 class="card-header">Leave a Comment:</h5>
@@ -107,34 +135,12 @@
               <h5 class="mt-0">${comentario.autor.username}</h5>
               ${comentario.comentario}
             </div>
+            <#if loggedUser == articulo.autor>
+              <form action="/deleteComment/${articulo.id}/${comentario.id}" method="post">
+                <button id="delete-comment" type="submit" class="btn btn-primary">Delete</button>
+              </form>
+            </#if>
           </#list>
-        </div>
-
-
-        <!-- Comment with nested comments -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-          </div>
         </div>
 
       </div>
@@ -230,6 +236,35 @@
                 <h5 class="mt-0">' + usuario + '</h5>' + comentario + '</div>';
         console.log(html);
         $('#comment-container').append(html);
+      });
+
+      $('#editButton').click(function () {
+          var mydiv = document.getElementById("mydiv");
+          mydiv.style.visibility="visible";
+          var title = "${articulo.titulo}";
+          $('#postTitle').val(
+              title
+          );
+          var body = "${articulo.cuerpo}";
+          $('#postContent').val(
+              body
+          );
+          var tags;
+          var etiquetas = $("#postedTags");
+          var i;
+          <#--for(i = 0; i < ${articulo.listaEtiquetas?size}; i++)-->
+          <#--{-->
+          <#--    console.log(etiquetas[i]);-->
+          <#--    tags+= etiquetas[i];-->
+          <#--    tags+= " ";-->
+          <#--}-->
+          <#--etiquetas.forEach(function(etq) {-->
+          <#--    tags.concat(etq.etiqueta);-->
+          <#--    tags.concat(" ");-->
+          <#--});-->
+          <#--$('#tags').val(-->
+          <#--   tags-->
+          <#--);-->
       });
     });
   </script>
