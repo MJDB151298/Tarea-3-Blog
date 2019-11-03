@@ -167,7 +167,7 @@ public class InterArticleServices {
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setLong(1, art.getListaComentarios().size()+1);
+            prepareStatement.setLong(1, Controladora.getInstance().getMisComentarios().size());
             prepareStatement.setLong(2, art.getId());
             prepareStatement.setLong(3, comentario.getId());
             //
@@ -207,7 +207,7 @@ public class InterArticleServices {
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setLong(1, art.getListaEtiquetas().size()+1);
+            prepareStatement.setLong(1, Controladora.getInstance().getMisEtiquetas().size());
             prepareStatement.setLong(2, art.getId());
             prepareStatement.setLong(3, etq.getId());
             //

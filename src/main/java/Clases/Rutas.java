@@ -11,6 +11,8 @@ import spark.Spark;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -115,6 +117,43 @@ public class Rutas {
             }
             response.redirect("/menu");
             return "";
+        });
+
+        Spark.post("/updatePost/:idArticle", (request, response) -> {
+            String title = request.queryParams("postTitle");
+            String body = request.queryParams("postContent");
+            ArrayList<Etiqueta> tags = Controladora.getInstance().divideTags(request.queryParams("tags"));
+            long id = Long.parseLong(request.params("idArticle"));
+            Articulo art = Controladora.getInstance().buscarArticulo(id);
+            art.setTitulo(title);
+            art.setCuerpo(body);
+            art.setFecha(Date.valueOf(LocalDate.now().toString()));
+            new ArticleServices().actualizarArticulo(art);
+            for (Etiqueta e: art.getListaEtiquetas()
+                 ) {
+                new InterArticleServices().borrarEtiquetaDeArticulo(art, e);
+            }
+            art.setListaEtiquetas(tags);
+            for (Etiqueta etq: tags
+                 ) {
+                Etiqueta tag;
+                if(!Controladora.getInstance().tagExistence(etq))
+                {
+                    tag = new Etiqueta(etq.getEtiqueta());
+                    long idEtq = Controladora.getInstance().getMisEtiquetas().get(Controladora.getInstance().getMisEtiquetas().size()-1).getId()+1;
+                    tag.setId(idEtq);
+                    Controladora.getInstance().getMisEtiquetas().add(tag);
+                    new TagServices().crearEtiqueta(tag);
+                }
+                else
+                {
+                    tag = Controladora.getInstance().buscarEtiqueta(etq.getId());
+                }
+
+                new InterArticleServices().nuevaEtiquetaAlArticulo(art, tag);
+            }
+            response.redirect("/menu/" + id);
+            return " ";
         });
 
         /**

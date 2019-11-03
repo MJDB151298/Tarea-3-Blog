@@ -106,6 +106,36 @@ public class Controladora implements Serializable {
         return etiq;
     }
 
+    public boolean tagExistence(Etiqueta etq)
+    {
+        boolean flag = false;
+
+        for (Etiqueta etiqueta: Controladora.getInstance().getMisEtiquetas()
+             ) {
+            if(etiqueta.getEtiqueta().equalsIgnoreCase(etq.getEtiqueta()))
+            {
+                flag = true;
+            }
+        }
+
+        return flag;
+    }
+
+    public boolean validateArticle(Articulo art)
+    {
+        boolean flag = true;
+
+        for (Articulo articulo: Controladora.getInstance().getMisArticulos()
+        ) {
+            if(art.getTitulo().equalsIgnoreCase(articulo.getTitulo()) || art.getCuerpo().equalsIgnoreCase(articulo.getCuerpo()))
+            {
+                flag = false;
+            }
+        }
+
+        return flag;
+    }
+
     public boolean validateUser(String username){
         for(Usuario usuario : Controladora.getInstance().getMisUsuarios()){
             if(usuario.getUsername().equalsIgnoreCase(username)){
@@ -134,6 +164,22 @@ public class Controladora implements Serializable {
             tags.add(etq);
         }
         return tags;
+    }
+
+    public boolean buscarEtqDeArticulo(Articulo art, Etiqueta etiqueta)
+    {
+        boolean flag = false;
+
+        for (Etiqueta etq: art.getListaEtiquetas()
+             ) {
+            if (etiqueta.getEtiqueta().equalsIgnoreCase(etq.getEtiqueta()))
+            {
+                flag = true;
+                break;
+            }
+        }
+
+        return flag;
     }
 
     public ArrayList<Usuario> getMisUsuarios() {
