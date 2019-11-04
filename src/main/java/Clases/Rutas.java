@@ -57,6 +57,17 @@ public class Rutas {
             return getPlantilla(configuration, attributes, "post.ftl");
         });
 
+        Spark.get("/deletePost/:idPost", (request, response) -> {
+           long id = Long.parseLong(request.params("idPost"));
+           Articulo art = Controladora.getInstance().buscarArticulo(id);
+           new InterArticleServices().borrarTodaEtiquetaDeArticulo(art);
+           new InterArticleServices().borrarTodoComentarioArticulo(art);
+           new ArticleServices().borrarArticulo(id);
+           Controladora.getInstance().getMisArticulos().remove(art);
+            response.redirect("/menu");
+            return "";
+        });
+
         Spark.get("/menu/:id", (request, response) -> {
             long id = Long.parseLong(request.params("id"));
             Articulo articulo = Controladora.getInstance().buscarArticulo(id);
@@ -104,16 +115,20 @@ public class Rutas {
             String body = request.queryParams("postContent");
             ArrayList<Etiqueta> tags = Controladora.getInstance().divideTags(request.queryParams("tags"));
             Articulo art = new Articulo(title, body, request.session(true).attribute("usuario"));
-            art.setListaEtiquetas(tags);
-            new ArticleServices().crearArticulo(art);
-            for (Etiqueta etq: tags
-                 ) {
-                if (new TagServices().getEtiqueta(etq.getId()) == null)
-                {
-                    Controladora.getInstance().getMisEtiquetas().add(etq);
-                    new TagServices().crearEtiqueta(etq);
+            if (Controladora.getInstance().validateArticle(art))
+            {
+                art.setListaEtiquetas(tags);
+                new ArticleServices().crearArticulo(art);
+                for (Etiqueta etq: tags
+                ) {
+                    if (Controladora.getInstance().buscarEtqPorContenido(etq.getEtiqueta()) == null)
+                    {
+                        etq.setId(Controladora.getInstance().getMisEtiquetas().size()+1);
+                        Controladora.getInstance().getMisEtiquetas().add(etq);
+                        new TagServices().crearEtiqueta(etq);
+                    }
+                    new InterArticleServices().nuevaEtiquetaAlArticulo(art, etq);
                 }
-                new InterArticleServices().nuevaEtiquetaAlArticulo(art, etq);
             }
             response.redirect("/menu");
             return "";
@@ -147,7 +162,7 @@ public class Rutas {
                 }
                 else
                 {
-                    tag = Controladora.getInstance().buscarEtiqueta(etq.getId());
+                    tag = Controladora.getInstance().buscarEtqPorContenido(etq.getEtiqueta());
                 }
 
                 new InterArticleServices().nuevaEtiquetaAlArticulo(art, tag);

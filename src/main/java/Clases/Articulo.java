@@ -70,7 +70,7 @@ public class Articulo {
         return cuerpoResumido;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public void setTitulo(String titulo) {

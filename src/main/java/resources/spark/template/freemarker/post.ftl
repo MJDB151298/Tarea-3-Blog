@@ -42,12 +42,20 @@
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">${loggedUser.username}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/disconnect">Desconectar</a>
-          </li>
+          <#if loggedUser?exists>
+            <li class="nav-item">
+              <a class="nav-link" href="#">${loggedUser.username}</a>
+            </li>
+          </#if>
+          <#if loggedUser?exists>
+            <li class="nav-item">
+              <a class="nav-link" href="/disconnect">Desconectar</a>
+            </li>
+          <#else>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          </#if>
         </ul>
       </div>
     </div>
@@ -96,12 +104,14 @@
           <hr>
 
           <!-- edit comment-->
-          <#if articulo.autor.username == loggedUser.username>
+          <#if loggedUser?exists && (articulo.autor.username == loggedUser.username || loggedUser.administrador)>
             <a id="editButton" class="btn btn-primary">Edit</a>
-              <br><br>
+            <br><br>
+            <a id="deleteButton" class="btn btn-primary">Delete</a>
+            <br><br>
           </#if>
 
-          <#if articulo.autor.username == loggedUser.username>
+          <#if loggedUser?exists && articulo.autor.username == loggedUser.username>
               <div id="mydiv" style="visibility:hidden">
                   <form method="post" action="/updatePost/${articulo.id}">
                       <div class="form-group">
@@ -115,33 +125,35 @@
               </div>
           </#if>
         <!-- Comments Form -->
-        <div class="card my-4">
-          <h5 class="card-header">Leave a Comment:</h5>
-          <div class="card-body">
-            <form action="/saveComment/${articulo.id}">
-              <div class="form-group">
-                <textarea name="commentContent" class="form-control" rows="3"></textarea>
-              </div>
-              <button id="upload-comment" type="submit" class="btn btn-primary">Submit</button>
-            </form>
+        <#if loggedUser?exists>
+          <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+              <form action="/saveComment/${articulo.id}">
+                <div class="form-group">
+                  <textarea name="commentContent" class="form-control" rows="3"></textarea>
+                </div>
+                <button id="upload-comment" type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
           </div>
-        </div>
+        </#if>
 
         <!-- Single Comment -->
-        <div id="comment-container" class="media mb-4">
-          <#list listaComentarios as comentario>
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">${comentario.autor.username}</h5>
-              ${comentario.comentario}
-            </div>
-            <#if loggedUser == articulo.autor>
-              <form action="/deleteComment/${articulo.id}/${comentario.id}" method="post">
-                <button id="delete-comment" type="submit" class="btn btn-primary">Delete</button>
-              </form>
-            </#if>
-          </#list>
-        </div>
+          <div id="comment-container" class="media mb-4">
+            <#list listaComentarios as comentario>
+              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+              <div class="media-body">
+                <h5 class="mt-0">${comentario.autor.username}</h5>
+                ${comentario.comentario}
+              </div>
+              <#if loggedUser?exists && (loggedUser == articulo.autor)>
+                <form action="/deleteComment/${articulo.id}/${comentario.id}" method="post">
+                  <button id="delete-comment" type="submit" class="btn btn-primary">Delete</button>
+                </form>
+              </#if>
+            </#list>
+          </div>
 
       </div>
 
@@ -265,6 +277,11 @@
           <#--$('#tags').val(-->
           <#--   tags-->
           <#--);-->
+      });
+      $("#deleteButton").click(function () {
+        var ruta = "/deletePost/${articulo.id}";
+        console.log(ruta);
+        document.location.href = ruta.toString();
       });
     });
   </script>

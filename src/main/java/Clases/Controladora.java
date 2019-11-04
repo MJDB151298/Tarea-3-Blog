@@ -166,6 +166,22 @@ public class Controladora implements Serializable {
         return tags;
     }
 
+    public Etiqueta buscarEtqPorContenido(String cont)
+    {
+        Etiqueta etq = null;
+
+        for (Etiqueta e: Controladora.getInstance().getMisEtiquetas()
+             ) {
+            if(e.getEtiqueta().equalsIgnoreCase(cont))
+            {
+                etq = e;
+                break;
+            }
+        }
+
+        return etq;
+    }
+
     public boolean buscarEtqDeArticulo(Articulo art, Etiqueta etiqueta)
     {
         boolean flag = false;

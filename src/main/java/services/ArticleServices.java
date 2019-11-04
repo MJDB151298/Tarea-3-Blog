@@ -161,7 +161,7 @@ public class ArticleServices {
         return ok;
     }
 
-    public boolean borrarArticulo(int id){
+    public boolean borrarArticulo(long id){
         boolean ok =false;
 
         Connection con = null;
@@ -173,7 +173,7 @@ public class ArticleServices {
             PreparedStatement prepareStatement = con.prepareStatement(query);
 
             //Indica el where...
-            prepareStatement.setInt(1, id);
+            prepareStatement.setLong(1, id);
             //
             int fila = prepareStatement.executeUpdate();
             ok = fila > 0 ;

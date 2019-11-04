@@ -293,6 +293,47 @@ public class InterArticleServices {
         return ok;
     }
 
+    public boolean borrarTodoComentarioArticulo(Articulo art){
+        boolean ok =false;
+
+        Connection con = null;
+        Connection con2 = null;
+        try {
+
+            String query = "delete from ARTICULOSCOMENTARIOS where idarticulo = ?";
+            con = DataBaseServices.getInstancia().getConexion();
+            //
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+
+            //Indica el where...
+            prepareStatement.setLong(1, art.getId());
+            //
+            int fila = prepareStatement.executeUpdate();
+            ok = fila > 0 ;
+
+            String query2 = "delete from COMENTARIOS where articulo = ?";
+            con2 = DataBaseServices.getInstancia().getConexion();
+            //
+            PreparedStatement prepareStatement2 = con2.prepareStatement(query2);
+
+            //Indica el where...
+            prepareStatement2.setLong(1, art.getId());
+            //
+            int fila2 = prepareStatement2.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return ok;
+    }
+
     public boolean borrarEtiquetaDeArticulo(Articulo art, Etiqueta etq){
         boolean ok =false;
 
@@ -310,6 +351,37 @@ public class InterArticleServices {
             //
             int fila = prepareStatement.executeUpdate();
             ok = fila > 0 ;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return ok;
+    }
+
+    public boolean borrarTodaEtiquetaDeArticulo(Articulo art){
+        boolean ok =false;
+
+        Connection con = null;
+        Connection con2 = null;
+        try {
+            String query = "delete from ARTICULOSETIQUETAS where idarticulo = ?";
+            con = DataBaseServices.getInstancia().getConexion();
+            //
+            PreparedStatement prepareStatement = con.prepareStatement(query);
+
+            //Indica el where...
+            prepareStatement.setLong(1, art.getId());
+            //
+            int fila = prepareStatement.executeUpdate();
+
+            ok = fila > 0;
 
         } catch (SQLException ex) {
             Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
