@@ -1,9 +1,8 @@
 package Clases;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.sql.Date;
-import java.util.StringTokenizer;
 
 public class Articulo {
     private long id;
@@ -51,18 +50,12 @@ public class Articulo {
     }
     public String getCuerpoResumido(){
         cuerpoResumido = "";
-        StringTokenizer st = new StringTokenizer(getCuerpo());
-        if(st.countTokens() > 30){
+        if(getCuerpo().length() > 30){
             int i = 0;
-            int spaces = 0;
-            while(spaces <= 30){
-                cuerpoResumido += cuerpo.charAt(i);
-                if(cuerpo.charAt(i) == ' '){
-                    spaces++;
-                }
+            while(i < 30){
+                cuerpoResumido += getCuerpo().charAt(i);
                 i++;
             }
-            cuerpoResumido += "...";
         }
         else{
             cuerpoResumido = getCuerpo();
