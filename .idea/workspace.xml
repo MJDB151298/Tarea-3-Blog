@@ -4,8 +4,6 @@
     <list default="true" id="7595b836-c63a-45d4-94f0-5fb4a1e1118f" name="Default Changelist" comment="Subiendo avance de detectar articulo repetido">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Articulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Articulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Filtros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Filtros.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Rutas.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -235,7 +233,8 @@
       <workItem from="1572634997876" duration="47000" />
       <workItem from="1572641791003" duration="1405000" />
       <workItem from="1572715808662" duration="43688000" />
-      <workItem from="1573043141463" duration="584000" />
+      <workItem from="1573043141463" duration="859000" />
+      <workItem from="1573140362301" duration="460000" />
     </task>
     <task id="LOCAL-00001" summary="Subiendo borrado comentario por autor de este">
       <created>1572572672853</created>
