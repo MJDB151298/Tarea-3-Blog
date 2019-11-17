@@ -9,6 +9,7 @@ import static spark.Spark.staticFileLocation;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
+        
         staticFileLocation("/publico");
         new Rutas().manejoRutas();
 

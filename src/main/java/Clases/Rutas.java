@@ -246,7 +246,7 @@ public class Rutas {
             Session session=request.session(true);
             session.invalidate();
             response.removeCookie("usuario_id");
-            response.redirect("/login");
+            response.redirect("/menu");
             return "";
         });
 
