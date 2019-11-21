@@ -4,12 +4,15 @@ import services.*;
 
 import java.sql.SQLException;
 
+import static spark.Spark.port;
 import static spark.Spark.staticFileLocation;
 
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        
+
+        port(8081);
+
         staticFileLocation("/publico");
         new Rutas().manejoRutas();
 
