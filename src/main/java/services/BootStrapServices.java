@@ -31,7 +31,8 @@ public class BootStrapServices {
     public static void crearTablas() throws  SQLException{
         String sql = "CREATE TABLE IF NOT EXISTS USUARIOS\n" +
                 "(\n" +
-                "  USERNAME VARCHAR(100) PRIMARY KEY NOT NULL,\n" +
+                " ID VARCHAR(100) PRIMARY KEY NOT NULL,\n" +
+                "  USERNAME VARCHAR(100) NOT NULL,\n" +
                 "  NOMBRE VARCHAR(100) NOT NULL,\n" +
                 "  PASSWORD VARCHAR(100) NOT NULL,\n" +
                 "  ADMINISTRADOR BOOLEAN NOT NULL,\n" +

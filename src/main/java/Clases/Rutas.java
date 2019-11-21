@@ -4,6 +4,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.Version;
+import org.apache.commons.codec.digest.DigestUtils;
 import services.*;
 import spark.Session;
 import spark.Spark;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class Rutas {
     public void manejoRutas()
@@ -155,8 +157,11 @@ public class Rutas {
                 if(!Controladora.getInstance().tagExistence(etq))
                 {
                     tag = new Etiqueta(etq.getEtiqueta());
-                    long idEtq = Controladora.getInstance().getMisEtiquetas().get(Controladora.getInstance().getMisEtiquetas().size()-1).getId()+1;
-                    tag.setId(idEtq);
+                    long idEtq = 0;
+                    if(Controladora.getInstance().getMisEtiquetas().size() != 0){
+                        idEtq = Controladora.getInstance().getMisEtiquetas().get(Controladora.getInstance().getMisEtiquetas().size()-1).getId()+1;
+                        tag.setId(idEtq);
+                    }
                     Controladora.getInstance().getMisEtiquetas().add(tag);
                     new TagServices().crearEtiqueta(tag);
                 }
@@ -184,7 +189,8 @@ public class Rutas {
         Spark.post("/login", (request, response) -> {
             String username = request.queryParams("username");
             String password = request.queryParams("password");
-            if(!Controladora.getInstance().validatePassword(username, password)){
+            String hashedPassword = DigestUtils.md5Hex(password);
+            if(!Controladora.getInstance().validatePassword(username, hashedPassword)){
                 String warningText = "Usuario o contrasena incorrectos.";
                 Map<String, Object> attributes = new HashMap<>();
                 attributes.put("warningText", warningText);
@@ -198,7 +204,7 @@ public class Rutas {
             String remember = request.queryParams("remember");
 
             if(remember != null){
-                response.cookie("usuario_id", usuario.getUsername(), 604800000);
+                response.cookie("usuario_id", usuario.getId(), 604800000);
             }
             response.redirect("/menu");
             return "";
@@ -231,7 +237,9 @@ public class Rutas {
                 attributes.put("warningText", warningText);
                 return getPlantilla(configuration, attributes, "register.ftl");
             }
-            Usuario usuario = new Usuario(username, nombre, password, false);
+            String hashedPassword = DigestUtils.md5Hex(password);
+            Usuario usuario = new Usuario(username, nombre, hashedPassword, false);
+            usuario.setId(UUID.randomUUID().toString());
             new UserServices().crearUsuario(usuario);
             Session session=request.session(true);
             session.attribute("usuario", usuario);

@@ -24,6 +24,7 @@ public class UserServices {
             ResultSet rs = prepareStatement.executeQuery();
             while(rs.next()){
                 Usuario usu = new Usuario();
+                usu.setId(rs.getString("id"));
                 usu.setUsername(rs.getString("username"));
                 usu.setNombre(rs.getString("nombre"));
                 usu.setPassword(rs.getString("password"));
@@ -67,6 +68,7 @@ public class UserServices {
             ResultSet rs = prepareStatement.executeQuery();
             while(rs.next()){
                 usu = new Usuario();
+                usu.setId(rs.getString("id"));
                 usu.setUsername(rs.getString("username"));
                 usu.setNombre(rs.getString("nombre"));
                 usu.setPassword(rs.getString("password"));
@@ -99,16 +101,17 @@ public class UserServices {
         Connection con = null;
         try {
 
-            String query = "insert into usuarios(username, nombre, password, administrador, autor) values(?,?,?,?,?)";
+            String query = "insert into usuarios(id,username, nombre, password, administrador, autor) values(?,?,?,?,?,?)";
             con = DataBaseServices.getInstancia().getConexion();
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setString(1, usu.getUsername());
-            prepareStatement.setString(2, usu.getNombre());
-            prepareStatement.setString(3, usu.getPassword());
-            prepareStatement.setBoolean(4, usu.isAdministrador());
-            prepareStatement.setBoolean(5, usu.isAutor());
+            prepareStatement.setString(1, usu.getId());
+            prepareStatement.setString(2, usu.getUsername());
+            prepareStatement.setString(3, usu.getNombre());
+            prepareStatement.setString(4, usu.getPassword());
+            prepareStatement.setBoolean(5, usu.isAdministrador());
+            prepareStatement.setBoolean(6, usu.isAutor());
             //
             int fila = prepareStatement.executeUpdate();
             ok = fila > 0 ;

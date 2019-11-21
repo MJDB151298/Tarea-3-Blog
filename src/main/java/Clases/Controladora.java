@@ -76,6 +76,15 @@ public class Controladora implements Serializable {
         return usuario;
     }
 
+    public Usuario buscarUsuarioPorID(String id){
+        for(Usuario usuario : Controladora.getInstance().getMisUsuarios()){
+            if(usuario.getId().equalsIgnoreCase(id)){
+                return usuario;
+            }
+        }
+        return null;
+    }
+
     public Comentario buscarComentario(long id)
     {
         Comentario coment = null;

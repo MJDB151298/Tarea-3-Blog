@@ -19,8 +19,7 @@ public class InterArticleServices {
         Articulo art;
         int idComentario;
         int idEtiqueta;
-        ArrayList<Comentario> coments = new ArrayList<>();
-        ArrayList<Etiqueta> etiquetas = new ArrayList<>();
+
         Connection con = null; //objeto conexion.
         Connection con2 = null; //objeto conexion.
         Connection con3 = null; //objeto conexion.
@@ -32,6 +31,8 @@ public class InterArticleServices {
             PreparedStatement prepareStatement = con.prepareStatement(query);
             ResultSet rs = prepareStatement.executeQuery();
             while(rs.next()){
+                ArrayList<Comentario> coments = new ArrayList<>();
+                ArrayList<Etiqueta> etiquetas = new ArrayList<>();
                 idArticulo = rs.getInt("id");
                 art = Controladora.getInstance().buscarArticulo(idArticulo);
 
@@ -60,9 +61,11 @@ public class InterArticleServices {
                     idEtiqueta = rs3.getInt("IDETIQUETA");
                     Etiqueta et = Controladora.getInstance().buscarEtiqueta(idEtiqueta);
                     etiquetas.add(et);
-                }
 
+                    System.out.println("El id del articulo es: " + art.getId() + "El nombre de la etiqueta es: " + et.getEtiqueta());
+                }
                 art.setListaEtiquetas(etiquetas);
+
             }
 
         } catch (SQLException ex) {
