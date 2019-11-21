@@ -5,8 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Clases/Filtros.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Clases/Filtros.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/autor.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/publico/spark/template/freemarker/autor.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/publico/spark/template/freemarker/index.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/publico/spark/template/freemarker/login.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/post.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/publico/spark/template/freemarker/post.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resources/spark/template/freemarker/register.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resources/publico/spark/template/freemarker/register.ftl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -238,8 +241,8 @@
       <workItem from="1572715808662" duration="43688000" />
       <workItem from="1573043141463" duration="859000" />
       <workItem from="1573140362301" duration="1812000" />
-      <workItem from="1574286064008" duration="6546000" />
-      <workItem from="1574364477710" duration="2010000" />
+      <workItem from="1574286064008" duration="6150000" />
+      <workItem from="1574357653107" duration="1150000" />
     </task>
     <task id="LOCAL-00001" summary="Subiendo borrado comentario por autor de este">
       <created>1572572672853</created>
