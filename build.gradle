@@ -40,8 +40,3 @@ dependencies {
 task stage {
     dependsOn shadowJar
 }
-
-
-task stage {
-    dependsOn shadowJar
-}

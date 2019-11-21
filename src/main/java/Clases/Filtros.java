@@ -33,6 +33,11 @@ public class Filtros {
             }
         });
 
+        before("/", (request, response) -> {
+            System.out.println("Entrando a la posicion");
+            response.redirect("/menu");
+        });
+
         before("/login", (request, response) -> {
             Usuario usuario=request.session().attribute("usuario");
             if(usuario!=null){
