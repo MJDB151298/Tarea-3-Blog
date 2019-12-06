@@ -111,7 +111,7 @@
             <br><br>
           </#if>
 
-          <#if loggedUser?exists && articulo.autor.username == loggedUser.username>
+          <#if loggedUser?exists && (articulo.autor.username == loggedUser.username || loggedUser.administrador)>
               <div id="mydiv" style="visibility:hidden">
                   <form method="post" action="/updatePost/${articulo.id}">
                       <div class="form-group">
@@ -147,7 +147,7 @@
                 <h5 class="mt-0">${comentario.autor.username}</h5>
                 ${comentario.comentario}
               </div>
-              <#if loggedUser?exists && (loggedUser == articulo.autor)>
+              <#if loggedUser?exists && (loggedUser == articulo.autor || loggedUser.administrador)>
                 <form action="/deleteComment/${articulo.id}/${comentario.id}" method="post">
                   <button id="delete-comment" type="submit" class="btn btn-primary">Delete</button>
                 </form>

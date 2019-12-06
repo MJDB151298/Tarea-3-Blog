@@ -80,7 +80,7 @@
         <h2 class="my-4">Posts</h2>
 
         <!-- Post Creation Form -->
-        <#if loggedUser?exists && loggedUser.autor == true>
+        <#if loggedUser?exists && (loggedUser.autor == true || loggedUser.administrador == true)>
           <form method="post" action="/createPost">
             <div class="form-group">
               <input class="form-control" name="postTitle" placeholder="Title" type="text">
