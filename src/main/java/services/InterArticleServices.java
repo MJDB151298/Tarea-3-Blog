@@ -72,9 +72,15 @@ public class InterArticleServices {
             Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
         } finally{
             try {
-                con.close();
-                con2.close();
-                con3.close();
+                if(con != null){
+                    con.close();
+                }
+                if(con2 != null){
+                    con2.close();
+                }
+                if(con3 != null){
+                    con3.close();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
             }
