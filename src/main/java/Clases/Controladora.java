@@ -167,9 +167,14 @@ public class Controladora implements Serializable {
     {
         ArrayList<Etiqueta> tags = new ArrayList<>();
         String[] ntags = tagsinput.split(" ");
-        for (String tag: ntags
-             ) {
+        for (String tag: ntags) {
             Etiqueta etq = new Etiqueta(tag);
+            long id = 0;
+            if(getMisEtiquetas().size() != 0){
+                id = Controladora.getInstance().getMisEtiquetas().get(Controladora.getInstance().getMisEtiquetas().size()-1).getId()+1;
+            }
+            System.out.println("El id del etiqueta es: " + id);
+            etq.setId(id);
             tags.add(etq);
         }
         return tags;

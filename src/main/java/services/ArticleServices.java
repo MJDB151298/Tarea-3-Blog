@@ -100,16 +100,17 @@ public class ArticleServices {
         Connection con = null;
         try {
 
-            String query = "insert into articulos(id, titulo, cuerpo, autor, fecha) values(?,?,?,?,?)";
+            String query = "insert into articulos(id, titulo, cuerpo, autor, fecha, categoria) values(?,?,?,?,?,?)";
             con = DataBaseServices.getInstancia().getConexion();
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setLong(1, Controladora.getInstance().getMisArticulos().size()+1);
+            prepareStatement.setLong(1, art.getId());
             prepareStatement.setString(2, art.getTitulo());
             prepareStatement.setString(3, art.getCuerpo());
             prepareStatement.setString(4, art.getAutor().getUsername());
             prepareStatement.setDate(5, art.getFecha());
+            prepareStatement.setString(6, art.getCategoria());
             //
             int fila = prepareStatement.executeUpdate();
             ok = fila > 0 ;

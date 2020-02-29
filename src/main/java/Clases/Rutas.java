@@ -52,6 +52,9 @@ public class Rutas {
             Comentario comentario = Controladora.getInstance().buscarComentario(idComment);
             articleServices.borrarComentarioDeArticulo(art, comentario);
             art.getListaComentarios().remove(comentario);
+            Controladora.getInstance().getMisComentarios().remove(comentario);
+            //response.redirect("menu/" + idPost);
+            //return "";
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("articulo", art);
             attributes.put("listaComentarios", art.getListaComentarios());
@@ -65,6 +68,12 @@ public class Rutas {
            new InterArticleServices().borrarTodaEtiquetaDeArticulo(art);
            new InterArticleServices().borrarTodoComentarioArticulo(art);
            new ArticleServices().borrarArticulo(id);
+           for(Comentario comentario : art.getListaComentarios()){
+               Controladora.getInstance().getMisComentarios().remove(comentario);
+           }
+           for(Etiqueta e : art.getListaEtiquetas()){
+               Controladora.getInstance().getMisEtiquetas().remove(e);
+           }
            Controladora.getInstance().getMisArticulos().remove(art);
             response.redirect("/menu");
             return "";
@@ -73,7 +82,7 @@ public class Rutas {
         Spark.get("/menu/:id", (request, response) -> {
             long id = Long.parseLong(request.params("id"));
             Articulo articulo = Controladora.getInstance().buscarArticulo(id);
-            System.out.println(articulo.getId());
+            //System.out.println(articulo.getId());
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("articulo", articulo);
             attributes.put("listaComentarios", articulo.getListaComentarios());
@@ -115,8 +124,11 @@ public class Rutas {
         Spark.post("/createPost", (request, response) -> {
             String title = request.queryParams("postTitle");
             String body = request.queryParams("postContent");
+            String categoria = request.queryParams("postCategory");
+            body =  body.replace("\n", "").replace("\r", "");
             ArrayList<Etiqueta> tags = Controladora.getInstance().divideTags(request.queryParams("tags"));
-            Articulo art = new Articulo(title, body, request.session(true).attribute("usuario"));
+            System.out.println(request.queryParams("postCategory"));
+            Articulo art = new Articulo(title, body, request.session(true).attribute("usuario"), categoria);
             if (Controladora.getInstance().validateArticle(art))
             {
                 art.setListaEtiquetas(tags);

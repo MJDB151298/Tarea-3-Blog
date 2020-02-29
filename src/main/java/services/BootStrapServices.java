@@ -51,6 +51,7 @@ public class BootStrapServices {
                 "  CUERPO VARCHAR(2000) NOT NULL,\n" +
                 "  AUTOR VARCHAR(255),\n" +
                 "  FECHA DATE NOT NULL,\n" +
+                " CATEGORIA VARCHAR(255) NOT NULL, \n" +
                 "  FOREIGN KEY (AUTOR) references USUARIOS(USERNAME)" +
                 ");";
         Connection con2 = DataBaseServices.getInstancia().getConexion();

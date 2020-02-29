@@ -109,7 +109,7 @@ public class ComentServices {
             //
             PreparedStatement prepareStatement = con.prepareStatement(query);
             //Antes de ejecutar seteo los parametros.
-            prepareStatement.setLong(1, Controladora.getInstance().getMisComentarios().size()+1);
+            prepareStatement.setLong(1, comentario.getId());
             prepareStatement.setString(2, comentario.getComentario());
             prepareStatement.setString(3, comentario.getAutor().getUsername());
             prepareStatement.setLong(4, comentario.getArticulo().getId());

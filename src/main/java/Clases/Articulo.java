@@ -10,6 +10,7 @@ public class Articulo {
     private String cuerpo;
     private Usuario autor;
     private Date fecha;
+    private String categoria;
     private ArrayList<Comentario> listaComentarios;
     private ArrayList<Etiqueta> listaEtiquetas;
     private String cuerpoResumido;
@@ -18,12 +19,19 @@ public class Articulo {
 
     }
 
-    public Articulo(String titulo, String cuerpo, Usuario autor){
-        this.id = Controladora.getInstance().getMisArticulos().size()+1;
+    public Articulo(String titulo, String cuerpo, Usuario autor, String categoria){
+        if(Controladora.getInstance().getMisArticulos().size() == 0){
+            this.id = 1;
+        }
+        else{
+            this.id = Controladora.getInstance().getMisArticulos().
+                    get(Controladora.getInstance().getMisArticulos().size()-1).getId()+1;
+        }
         this.titulo = titulo;
         this.cuerpo = cuerpo;
         this.autor = autor;
         this.fecha = Date.valueOf(LocalDate.now());
+        this.categoria = categoria;
         this.listaComentarios = new ArrayList<>();
         this.listaEtiquetas = new ArrayList<>();
         this.cuerpoResumido = "";
@@ -44,6 +52,7 @@ public class Articulo {
     public Date getFecha() {
         return fecha;
     }
+    public String getCategoria() { return categoria; }
     public ArrayList<Etiqueta> getListaEtiquetas() { return listaEtiquetas; }
     public ArrayList<Comentario> getListaComentarios() {
         return listaComentarios;
@@ -76,6 +85,7 @@ public class Articulo {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
     public void setAutor(Usuario autor) {
         this.autor = autor;
     }

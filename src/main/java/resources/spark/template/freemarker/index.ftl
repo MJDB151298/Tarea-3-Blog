@@ -86,6 +86,15 @@
               <input class="form-control" name="postTitle" placeholder="Title" type="text">
               <textarea name="postContent" class="form-control" rows="6"></textarea>
               <input class="form-control" name="tags" placeholder="Tags" type="text">
+              <label for="sel1">Select list:</label>
+              <select class="form-control" id="sel1" name="postCategory">
+                <option>Accion</option>
+                <option>Comedia</option>
+                <option>Drama</option>
+                <option>Ficcion</option>
+                <option>Historia</option>
+                <option>Romance</option>
+              </select>
             </div>
             <button id="postPost" type="submit" class="btn btn-primary">Publish</button>
           </form>
@@ -105,6 +114,7 @@
                       <div class="card-footer text-muted">
                           Posted on January 1, 2017 by
                           <a href="#">${articulo.autor.username}</a>
+                          , Categoria: ${articulo.categoria}, 
                           <label>Tags:</label>
                           <#list articulo.listaEtiquetas as etq>
                               <a>${etq.etiqueta}</a>
@@ -143,6 +153,7 @@
         </div>
 
         <!-- Categories Widget -->
+        <!--
         <div class="card my-4">
           <h5 class="card-header">Categories</h5>
           <div class="card-body">
@@ -176,17 +187,17 @@
             </div>
           </div>
         </div>
-
+        -->
         <!-- Side Widget -->
+        <!--
         <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
           <div class="card-body">
             You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
           </div>
         </div>
-
+        -->
       </div>
-
     </div>
     <!-- /.row -->
 
